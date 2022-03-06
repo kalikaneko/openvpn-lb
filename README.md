@@ -10,6 +10,44 @@ This is a work in progress. Use it at your own risk.
 
 GPL3
 
+## Build
+
+For portability, disable `CGO`:
+
+```
+CGO_ENABLED=0 go build
+```
+
+## Run
+
+Invoke `openvpn-lb` with the arguments to be passed to individual `openvpn`
+processes. Make sure that you remove `--port` and `--proto` from your config
+file.
+
+You can control how many cores to use with the `NCPU` environment variable:
+
+```
+NCPU=2 /usr/sbin/openvpn-lb --config server.conf
+```
+
+Also, be aware that the `CWD` is currently hardcoded to `/etc/openvpn/server`,
+so your config files should be relative to that.
+
+You should have one `tcp` and one `udp` port open per used core:
+
+```
+root@htp# netstat -putan | grep openvpn
+tcp        0      0 0.0.0.0:1194            0.0.0.0:*               LISTEN      314493/openvpn
+tcp        0      0 0.0.0.0:1195            0.0.0.0:*               LISTEN      314495/openvpn
+udp        0      0 0.0.0.0:1194            0.0.0.0:*                           314491/openvpn
+udp        0      0 0.0.0.0:1195            0.0.0.0:*                           314496/openvpn
+tcp        0      0 127.0.0.1:8080          0.0.0.0:*               LISTEN      314487/openvpn-lb
+```
+
+## Bugs
+
+Likely. This is a sunday afternoon hack.
+
 ## References
 
 From [this answer](https://serverfault.com/a/1024171) in Stack Overflow:
