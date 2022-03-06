@@ -57,7 +57,7 @@ From [this answer](https://serverfault.com/a/1024171) in Stack Overflow:
 
 
 The [OpenVPN Access Server docs](https://openvpn.net/vpn-server-resources/advanced-option-settings-on-the-command-line/)
-give a little bit more detail:
+gives a little bit more detail:
 
 > Because the OpenVPN 2 code base is single-thread, meaning that an OpenVPN
 > process can run on only 1 CPU core and doesn't know how to make use of
