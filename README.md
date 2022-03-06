@@ -67,3 +67,6 @@ gives a little bit more detail:
 > OpenVPN clients to establish a connection via the UDP protocol and via the TCP
 > protocol, there are additional OpenVPN daemons necessary. In the case of the
 > OpenVPN Access Server this means we launch 1 TCP and 1 UDP daemon per CPU core.
+
+* Maybe useful: [Turning IPTables into a TCP load balancer for fun and profit](https://scalingo.com/blog/iptables)
+* [iptables load balancer tutorial](https://github.com/muzahid-c/iptables-loadbalancer)
